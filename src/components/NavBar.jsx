@@ -8,8 +8,8 @@ const NavBar = (props) => {
   const {testState, dispatch} = props;
   // dispatch()
   let handleTestClick = () => {
-    dispatch(changeState1('huzzah'))
-  }
+    dispatch(changeState1('huzzah'));
+  };
 
   console.log(testState);
 
@@ -19,6 +19,7 @@ const NavBar = (props) => {
         .top-nav-row {
           position: fixed;
           top: 0px;
+          left:0px;
           height: 40px;
           width: 100%;
           display: flex;
@@ -73,9 +74,8 @@ const NavBar = (props) => {
       <div className='top-nav-row'>
         <Link className='btn home-button' to='/'><span className="btn-text">Home</span></Link>
         <div className='nav-cluster'>
-          <Link className='btn nav-item' to="/testLink1">testLink</Link>
-          <Link className='btn nav-item' to="/testLInk2">testLink</Link>
-          <button className='btn nav-item' onClick={()=>{handleTestClick()}}>click me now</button>
+          <Link className='btn nav-item' to="/testPath">testLink</Link>
+          <button className='btn nav-item' onClick={()=>{handleTestClick();}}>click me now</button>
         </div>
       </div>
     </div>
