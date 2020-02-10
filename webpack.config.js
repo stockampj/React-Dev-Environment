@@ -27,7 +27,8 @@ module.exports = {
   devServer: {
     hot: true,
     contentBase: resolve(__dirname, 'build'),
-    publicPath: '/'
+    publicPath: '/',
+    open: 'chrome'
   },
 
   module: {

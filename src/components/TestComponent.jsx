@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import { changeState1 } from '../actions';
+import PropTypes from 'prop-types';
 
 const TestComponent = (props) => {
 
@@ -9,16 +8,27 @@ const TestComponent = (props) => {
     <div className='TestComponent'>
       <style jsx>{`
         .TestComponent {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          top:0px;
+          left: 0px;
           height: 100vh;
           width: 100vw;
-          background-color: rgba(50,0,100,1)
+          background-color: rgba(100,0,150,1)
         }
 
       `}</style>
-      <h1>Test Component</h1>
+      <h1>Test Component: {props.testState}</h1>
     </div>
   );
 };
+
+TestComponent.propTypes = {
+  testState: PropTypes.string
+};
+
 
 const mapStateToProps = (state) => {
   return {

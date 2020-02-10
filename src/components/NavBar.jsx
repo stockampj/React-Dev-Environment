@@ -1,17 +1,20 @@
 import React from 'react';
 import { connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import { changeState1 } from '../actions';
+import { changeState1, changeState2 } from '../actions';
+import PropTypes from 'prop-types';
 
 const NavBar = (props) => {
 
   const {testState, dispatch} = props;
   // dispatch()
   let handleTestClick = () => {
-    dispatch(changeState1('huzzah'));
+    if (testState !== 'Huzzah'){
+      dispatch(changeState1('Huzzah'));
+    } else {
+      dispatch(changeState2('Wonga'));
+    }
   };
-
-  console.log(testState);
 
   return (
     <div>
@@ -26,7 +29,7 @@ const NavBar = (props) => {
           justify-content: space-between;
           overflow: hidden;
           z-index: 1;
-          background-color: rgba(150,150,150, 1);
+          background-color: rgba(255,255,255, .2);
           border-bottom: solid 1px rgba(255, 255, 255, 0.2);
           -webkit-box-shadow: 4px 5px 5px -3px #000000; 
           box-shadow: 4px 5px 5px -3px #000000;
@@ -72,14 +75,22 @@ const NavBar = (props) => {
         }
       `}</style>
       <div className='top-nav-row'>
-        <Link className='btn home-button' to='/'><span className="btn-text">Home</span></Link>
         <div className='nav-cluster'>
+          <Link className='btn home-button' to='/'><span className="btn-text">Home</span></Link>
           <Link className='btn nav-item' to="/testPath">testLink</Link>
+        </div>
+        <div className='nav-cluster'>
           <button className='btn nav-item' onClick={()=>{handleTestClick();}}>click me now</button>
+          <button className='btn nav-item'>Useless Button: {testState}</button>
         </div>
       </div>
     </div>
   );
+};
+
+NavBar.propTypes = {
+  dispatch: PropTypes.func,
+  testState: PropTypes.string
 };
 
 const mapStateToProps = (state) => {
